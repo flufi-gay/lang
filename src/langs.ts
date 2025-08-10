@@ -92,12 +92,23 @@ export const langs: Record<string, Lang> = {
         style: "GS",
         scripts: {
             HelloWorld: `
-                out("Hello World");
+                out("Hello World")
             `,
             GreaterThan: `
                 var x = 5
                 if (x > 2)
                     out("x is greater than 2");
+            `,
+            Fibonacci: `
+                var a = 0
+                var b = 1
+                var c = 0
+
+                for (10)
+                    c = a + b
+                    a = b
+                    b = c;
+                out(c)
             `
         }
     }
