@@ -9,12 +9,12 @@ export const langs: Record<string, Lang> = {
                 print("Hello World");
             `,
             GreaterThan: [`
-                x = 5;
+                num x = 5;
                 if (x > 2) {
                     print("x is greater than 2");
                 }
             `,`
-                x = 5;
+                num x = 5;
                 if (x > 2)
                     print("x is greater than 2");
             `],

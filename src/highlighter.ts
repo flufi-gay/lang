@@ -460,6 +460,12 @@ export const StyleLanguages: { [key: string]: StyleLanguage } = {
                 "if","else","while","for",
             ], TokenType.Keyword),
 
+            ...TokenBatch([ // types
+                "str",
+                "num",
+                "bool",
+            ], TokenType.Type),
+
             ...TokenBatch([ // categiories
                 "looks"
             ], TokenType.Keyword),
