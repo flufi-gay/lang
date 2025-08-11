@@ -133,9 +133,9 @@ export const langs: Record<string, Lang> = {
                 }
             `],
             Fibonacci: [`
-                a = 0
-                b = 1
-                c = 0
+                a: num = 0
+                b: num = 1
+                c: num = 0
                 for (i, range(10)) {
                     c = a + b
                     a = b
@@ -143,9 +143,9 @@ export const langs: Record<string, Lang> = {
                 }
                 console.log(c)
             `,`
-                a = 0
-                b = 1
-                c = 0
+                a: num = 0
+                b: num = 1
+                c: num = 0
                 for (i, range(10)) {
                     c = a + b
                     a = b
