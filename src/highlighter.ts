@@ -431,6 +431,87 @@ export const StyleLanguages: { [key: string]: StyleLanguage } = {
 
             MatcherPresets.variable
         ]
+    },
+    KNP: {
+        context: {
+            bools: {
+                singleQuote: false,
+                doubleQuote: false,
+                backQuote: false,
+
+                //lineComment: false,
+                //multiLineComment: false,
+            },
+            numbers: {
+                bracketDepth: 0
+            }
+        },
+        
+        match: /((\w+<\w+:\s*\d+>)|(\w+<\w+>)|(\w+))|\\[n]|\w+|[\t\f ]+|[~?:+\-*\/=.|&]+|[,;(){}\[\]<>\n'`"\\]|./g,
+
+        tokens: {
+            ...TokenBatch([ // statements
+                "return"
+            ], TokenType.Keyword),
+
+            ...TokenBatch([ // keywords
+                "import",
+
+                "if","else","while","for",
+            ], TokenType.Keyword),
+
+            ...TokenBatch([ // categiories
+                "looks"
+            ], TokenType.Keyword),
+
+            ...TokenBatch([ // constants
+                "true","false",
+            ], TokenType.Constant),
+
+            ...TokenBatch([ // entities
+                "this"
+            ], TokenType.Entity),
+
+            ...TokenBatch([ // operators
+                "=",
+
+                "+","-","*","/","^","%",
+            ], TokenType.Operator),
+
+            ...TokenBatch([
+                "console"
+            ], TokenType.Debug, TokenBehaviour.Permanent)
+        },
+
+        matchers: [
+            // comments
+            (token, _data, context) => {
+                if (token == "//")
+                    context.bools!.lineComment = true;
+                if (token == "\n")
+                    context.bools!.lineComment = false;
+
+                if (context.bools!.lineComment)
+                    return TokenType.Comment;
+
+                if (token == "/*")
+                    context.bools!.multiLineComment = true;
+                if (token == "*/")
+                    context.bools!.multiLineComment = false;
+                
+                if (context.bools!.multiLineComment || token == "*/")
+                    return TokenType.Comment;
+            },
+
+            MatcherPresets.string,
+            MatcherPresets.number,
+
+            MatcherPresets.brackets,
+            MatcherPresets.execution,
+            MatcherPresets.property,
+
+            MatcherPresets.variable
+        ]
     }
 }
 

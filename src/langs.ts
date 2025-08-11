@@ -6,7 +6,7 @@ export const langs: Record<string, Lang> = {
         style: "FCL",
         scripts: {
             HelloWorld: `
-                print("Hello World")
+                print("Hello World");
             `,
             GreaterThan: [`
                 x = 5;
@@ -83,7 +83,7 @@ export const langs: Record<string, Lang> = {
                     a = b;
                     b = c;
                 )
-                console.log(c);
+                log c;
             `
         }
     },
@@ -110,6 +110,49 @@ export const langs: Record<string, Lang> = {
                     b = c;
                 out(c)
             `
+        }
+    },
+    knip: {
+        name: "Katnip",
+        style: "KNP",
+        scripts: {
+            HelloWorld: [`
+                console.log("Hello World")
+            `,`
+                looks.say("Hello World")
+            `],
+            GreaterThan: [`
+                x = 5
+                if (x > 2) {
+                    console.log("x is greater than 2")
+                }
+            `,`
+                x = 5
+                if (x > 2) {
+                    looks.say("x is greater than 2")
+                }
+            `],
+            Fibonacci: [`
+                a = 0
+                b = 1
+                c = 0
+                for (i, range(10)) {
+                    c = a + b
+                    a = b
+                    b = c
+                }
+                console.log(c)
+            `,`
+                a = 0
+                b = 1
+                c = 0
+                for (i, range(10)) {
+                    c = a + b
+                    a = b
+                    b = c
+                }
+                looks.say(c)
+            `]
         }
     }
 }
